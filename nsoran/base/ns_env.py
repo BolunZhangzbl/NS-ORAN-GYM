@@ -1,5 +1,6 @@
 from abc import abstractmethod
 import sem
+import pprint
 import fcntl
 import selectors
 import time
@@ -230,7 +231,8 @@ class NsOranEnv(gym.Env):
         print(f"\nself.sim_path: {self.sim_path}")
         self.action_controller = ActionController(self.sim_path, self.log_file, self.control_file, self.control_header)
         self.datalake = SQLiteDatabaseAPI(self.sim_path, num_ues_gnb=self.sim_result['params']['ues'])
-        print(f"\nself.datalake: {self.datalake.__dict__}")
+        pprint.pprint(self.datalake)
+        # print(f"\nself.datalake: {self.datalake.__dict__}")
 
         ### End Datalake and Action Controller ###
 
