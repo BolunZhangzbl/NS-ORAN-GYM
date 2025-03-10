@@ -185,7 +185,8 @@ class NsOranEnv(gym.Env):
         j_argument = ['-j', str(os.cpu_count())] # if this makes problems just cut it
         subprocess.run(['python3', build_program] + j_argument + ['build'],
                                          cwd=self.ns3_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-        
+        print(f"\nself.ns3_path: {self.ns3_path}")
+
     def start_sim(self):
         """
             Start the ns-3 simulation and all the entities to manage the control, i.e.,:
