@@ -3,7 +3,7 @@
 The `NsOranEnv` class is an abstract base class for creating environments compliant with the Gymnasium framework, specifically designed for ns-O-RAN simulations. This class provides a structured way to initialize, configure, and manage simulations using the ns-3 network simulator, facilitating the integration of reinforcement learning algorithms with network simulations.
 
 ### Initialization
-The class constructor initializes various attributes, including the paths to the ns-3 folder, the simulation scenario, configuration parameters, output folders, and control files. It also sets up the rendering mode, which defaults to `None` unless specified. Key boolean flags, such as `optimized` and `skip_configuration`, dictate whether the simulation runs in optimized mode and whether the configuration phase is skipped.
+The class constructor initializes various attributes, including the paths to the ns-3 folder, the simulation scenario, configuration parameters, output folders, and control files. It also sets up the  mode, which defaults to `None` unless specified. Key boolean flags, such as `optimized` and `skip_configuration`, dictate whether the simulation runs in optimized mode and whether the configuration phase is skipped.
 
 ### Simulation Setup
 The `setup_sim` method configures the simulation environment, setting library paths based on the optimization mode and initiating the configuration and build process for ns-3. This involves determining the correct executable for the simulation scenario and setting up environment variables necessary for running the simulation on different operating systems.
