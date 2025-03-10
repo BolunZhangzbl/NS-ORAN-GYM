@@ -30,7 +30,7 @@ if __name__ == '__main__':
     output_folder = '/home/bolun/ns-oran-gym/output'
 
     print('Creating TS Environment')
-    env = TrafficSteeringEnv(ns3_path='/home/bolun/ns-3-mmwave-oran', scenario_configuration=scenario_configuration, output_folder=output_folder, optimized=False, verbose=True)
+    env = TrafficSteeringEnv(ns3_path='/home/bolun/ns3-mmwave-oran', scenario_configuration=scenario_configuration, output_folder=output_folder, optimized=False, verbose=True)
 
     num_steps = 1000
 
