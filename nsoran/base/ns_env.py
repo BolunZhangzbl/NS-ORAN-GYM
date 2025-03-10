@@ -365,6 +365,7 @@ class NsOranEnv(gym.Env):
         if not self.is_simulation_over():
             # Take a step in the environment based on the given action
             actions = self._compute_action(action)
+            print(f"actions: {actions}")
 
             # Update the environment state and calculate the reward
             self.action_controller.create_control_action(self.last_timestamp, actions)
