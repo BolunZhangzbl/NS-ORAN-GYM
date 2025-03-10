@@ -260,7 +260,8 @@ class NsOranEnv(gym.Env):
         # Store process id or whatever reference we can use for the simulation
         
         self.sim_result['meta']['start_time'] = time.time()
-        
+
+        print(f"\ncommand: {command}")
         self.sim_process = subprocess.Popen(command, cwd=self.sim_path, env=self.environment,
                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
