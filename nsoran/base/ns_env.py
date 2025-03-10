@@ -227,7 +227,7 @@ class NsOranEnv(gym.Env):
         if not self.control_header:
             raise ValueError('Missing the list of values to perform control.')
         
-        print(f"self.sim_path: {self.sim_path}")
+        print(f"\nself.sim_path: {self.sim_path}")
         self.action_controller = ActionController(self.sim_path, self.log_file, self.control_file, self.control_header)
         self.datalake = SQLiteDatabaseAPI(self.sim_path, num_ues_gnb=self.sim_result['params']['ues'])
 
@@ -303,7 +303,7 @@ class NsOranEnv(gym.Env):
         # Ensure any remaining output is processed
         self.read_streams()
 
-        end = time.time() 
+        end = time.time()
         return_code = self.sim_process.returncode
 
         if return_code != 0:
