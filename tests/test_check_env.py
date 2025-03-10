@@ -1,3 +1,4 @@
+import os
 import pytest
 import json
 import gymnasium as gym
@@ -29,15 +30,16 @@ CHECK_ENV_IGNORE_WARNINGS = [
 
 def test_all_env_api():
 
-    configuration_path = './scenario_configurations/ts_use_case.json'
+    # configuration_path = './scenario_configurations/ts_use_case.json'
+    configuration_path = os.path.join(os.path.dirname(__file__), "../scenario_configurations/ts_use_case.json")
     with open(configuration_path) as params_file:
         params = params_file.read()
     scenario_configuration = json.loads(params)
     assert scenario_configuration
 
-    output_folder = '/workspace/ns-o-ran-gymnasium/output'
+    output_folder = '/home/bolun/ns-oran-gym/output'
 
-    env = TrafficSteeringEnv(ns3_path='/workspace/ns3-mmwave-oran', scenario_configuration=scenario_configuration, output_folder=output_folder, optimized=False)
+    env = TrafficSteeringEnv(ns3_path='/home/bolun/ns-3-mmwave-oran', scenario_configuration=scenario_configuration, output_folder=output_folder, optimized=False)
     assert env
 
     with warnings.catch_warnings(record=True) as caught_warnings:

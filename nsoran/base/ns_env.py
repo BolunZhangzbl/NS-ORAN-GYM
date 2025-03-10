@@ -71,6 +71,7 @@ class NsOranEnv(gym.Env):
         self.return_info = False
 
         self.setup_sim()
+        print("\nsetup_sim finished!")
     
     def setup_sim(self):
         """Setup all the relevant parameters to configure, compile and execute the simulation.

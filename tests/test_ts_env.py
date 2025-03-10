@@ -25,6 +25,7 @@ if __name__ == '__main__':
         exit(-1)
 
     scenario_configuration = json.loads(params)
+    print(f"scenario_configuration: {scenario_configuration}")
 
     output_folder = '/home/bolun/ns-oran-gym/output'
 

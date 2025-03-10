@@ -135,7 +135,7 @@ class SQLiteDatabaseAPI:
         # key is the table name, value is the dictionary {kpm name: type}
 
         self.acquire_connection()
-        # print("Connected to the database.")
+        print("Connected to the database.")
         self._create_table("lte_cu_cp", self.lte_cu_cp_keys)
         self._create_table("gnb_cu_cp", self.gnb_cu_cp_keys)
         self._create_table("lte_cu_up", self.lte_cu_up_keys)
