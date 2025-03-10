@@ -20,7 +20,7 @@ if __name__ == '__main__':
     traffic_models = [0, 1, 2, 3]
     indication_periodicity = scenario_configuration["indicationPeriodicity"][0]
 
-    output_folder = '/workspace/ns-o-ran-gymnasium/output'
+    output_folder = '/home/bolun/ns-oran-gym/output'
     num_steps = 1000
     offset_step = 0.1 # used only for visualization purposes
 
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
             print(f'Running configuration {scenario_configuration}')
 
-            env = TrafficSteeringEnv(ns3_path='/workspace/ns3-mmwave-oran',
+            env = TrafficSteeringEnv(ns3_path='/home/bolun/ns-3-mmwave-oran',
                                      scenario_configuration=scenario_configuration, output_folder=output_folder, optimized=True)
             
             start_time_perf = time.perf_counter_ns()

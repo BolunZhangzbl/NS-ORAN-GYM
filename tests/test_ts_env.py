@@ -1,3 +1,4 @@
+import os
 import argparse
 import json
 from gymnasium.utils.env_checker import check_env
@@ -13,7 +14,8 @@ if __name__ == '__main__':
     # pd.set_option("display.max_rows", None, "display.max_columns", None)
     # pd.set_option('expand_frame_repr', False)
 
-    configuration_path = './scenario_configurations/ts_use_case.json'
+    # configuration_path = './scenario_configurations/ts_use_case.json'
+    configuration_path = os.path.join(os.path.dirname(__file__), "../scenario_configurations/ts_use_case.json")
 
     try:
         with open(configuration_path) as params_file:
@@ -24,10 +26,10 @@ if __name__ == '__main__':
 
     scenario_configuration = json.loads(params)
 
-    output_folder = '/workspace/ns-o-ran-gymnasium/output'
+    output_folder = '/home/bolun/ns-oran-gym/output'
 
     print('Creating TS Environment')
-    env = TrafficSteeringEnv(ns3_path='/workspace/ns3-mmwave-oran', scenario_configuration=scenario_configuration, output_folder=output_folder, optimized=False, verbose=True)
+    env = TrafficSteeringEnv(ns3_path='/home/bolun/ns-3-mmwave-oran', scenario_configuration=scenario_configuration, output_folder=output_folder, optimized=False, verbose=True)
 
     num_steps = 1000
 

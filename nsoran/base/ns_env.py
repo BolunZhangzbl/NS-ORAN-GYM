@@ -1,4 +1,5 @@
 from abc import abstractmethod
+import sem
 import fcntl
 import selectors
 import time
@@ -225,7 +226,8 @@ class NsOranEnv(gym.Env):
 
         if not self.control_header:
             raise ValueError('Missing the list of values to perform control.')
-
+        
+        print(f"self.sim_path: {self.sim_path}")
         self.action_controller = ActionController(self.sim_path, self.log_file, self.control_file, self.control_header)
         self.datalake = SQLiteDatabaseAPI(self.sim_path, num_ues_gnb=self.sim_result['params']['ues'])
 
@@ -333,24 +335,28 @@ class NsOranEnv(gym.Env):
 
     def reset(self, *, seed: int | None = None, options: dict[str, Any] | None = None):
         super().reset(seed=seed)
-        self.close()
         self.start_sim()
+        self.close()
+        print("Finished start_sim!")
+        print(f"self.is_open: {self.is_open}")
         if options:
             if 'return_info' in options:
                 self.return_info = options['return_info']
             else:
                 self.return_info = False
-        else:
-            # Set here all the default settings
+        else:            # Set here all the default settings
             self.return_info = False
 
         # The simulation is started, thus we have to wait to the first set of observations
+        print("Start metricsReadySemaphore.acquire ......")
         self.metricsReadySemaphore.acquire()
+        print("Finished metricsReadySemaphore.acquire")
         self._fill_datalake()
-        
+        print("Finished _fill_datalake")
+
         self.terminated = False
         self.truncated = False
-
+        print("Start _get_obs, render......")
         # The Action is computed in the step, thus the control semaphore is not released
         return (self._get_obs(), self.render()) if self.return_info else (self._get_obs(), {})
 
@@ -462,6 +468,7 @@ class NsOranEnv(gym.Env):
         if self.is_open:
             # TODO save sim_result in the folder
             self.metricsReadySemaphore.release()
+            print("metricsReadySemaphore.release() executed!")
             self.sim_process.kill()
             self.controlSemaphore.unlink()
             self.metricsReadySemaphore.unlink()
