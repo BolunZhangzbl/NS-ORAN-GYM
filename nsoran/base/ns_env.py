@@ -202,6 +202,8 @@ class NsOranEnv(gym.Env):
         # We may need to explicit the default values as well here, but for the moment we only change the values of the configuration
         # A good way would be to explict such values is to port here sem.manager.CampaignManager::check_and_fill_parameters
         parameters = self.scenario_configuration
+        print("parameters (scenario configuration): ")
+        pprint.pprint(parameters)
         
         # sem.CampaignManager.check_and_fill_parameters()
 
