@@ -1,0 +1,7 @@
+{
+  "bufferSize": [ 10 ],
+  "e2nrEnabled": [1],
+  "simTime": [ 0.7 ],
+  "indicationPeriodicity": [0.1],
+  "hoSinrDifference": [ 5 ]
+}
