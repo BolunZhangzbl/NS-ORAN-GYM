@@ -12,7 +12,7 @@ class TrafficSteeringEnv(NsOranEnv):
             Cf (float): Cost factor for handovers. See compute_reward
             lambdaf (float): Decay factor for handover cost. See compute_reward
         """
-        super().__init__(ns3_path=ns3_path, scenario='scenario-one', scenario_configuration=scenario_configuration,
+        super().__init__(ns3_path=ns3_path, scenario='scenario-test', scenario_configuration=scenario_configuration,
                          output_folder=output_folder, optimized=optimized,
                          control_header = ['timestamp','ueId','nrCellId'], log_file='TsActions.txt', control_file='ts_actions_for_ns3.csv')
         # These features can be hardcoded since they are specific for the use case

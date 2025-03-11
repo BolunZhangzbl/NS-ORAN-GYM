@@ -15,7 +15,7 @@ if __name__ == '__main__':
     # pd.set_option('expand_frame_repr', False)
 
     # configuration_path = './scenario_configurations/ts_use_case.json'
-    configuration_path = os.path.join(os.path.dirname(__file__), "../scenario_configurations/ts_use_case.json")
+    configuration_path = os.path.join(os.path.dirname(__file__), "../scenario_configurations/ts_use_case_new.json")
 
     try:
         with open(configuration_path) as params_file:
