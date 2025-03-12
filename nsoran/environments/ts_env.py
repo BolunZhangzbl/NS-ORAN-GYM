@@ -79,8 +79,8 @@ class TrafficSteeringEnv(NsOranEnv):
 
         total_reward = 0.0
         current_kpms = self.datalake.read_kpms(self.last_timestamp, self.columns_reward)
-        print(f"self.previous_kpms: {self.previous_kpms}")
-        print(f"current_kpms: {current_kpms}")
+        print(f"\nself.previous_kpms: {self.previous_kpms}\n")
+        print(f"\ncurrent_kpms: {current_kpms}\n")
 
         # If this is the first iteration we do not have the previous kpms
         if(self.previous_kpms is None):
@@ -88,11 +88,11 @@ class TrafficSteeringEnv(NsOranEnv):
                 logging.debug(f'Starting first reward computation at timestamp {self.last_timestamp}')
             self.previous_timestamp = self.last_timestamp - (self.scenario_configuration['indicationPeriodicity'] * 1000)
             self.previous_kpms = self.datalake.read_kpms(self.previous_timestamp, self.columns_reward)
-            print(f"self.previous_kpms: {self.previous_kpms}")
+            print(f"\nself.previous_kpms: {self.previous_kpms}\n")
 
         #Assuming they are of the same lenght
-        print(f"self.previous_kpms: {self.previous_kpms}")
-        print(f"current_kpms: {current_kpms}")
+        print(f"\nself.previous_kpms: {self.previous_kpms}\n")
+        print(f"\ncurrent_kpms: {current_kpms}\n")
         for t_o, t_n in zip(self.previous_kpms, current_kpms):
             ueImsi_o, ueThpDl_o, sourceCell = t_o
             ueImsi_n, ueThpDl_n, currentCell = t_n

@@ -185,7 +185,7 @@ class NsOranEnv(gym.Env):
         j_argument = ['-j', str(os.cpu_count())] # if this makes problems just cut it
         subprocess.run(['python3', build_program] + j_argument + ['build'],
                                          cwd=self.ns3_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-        print(f"\nself.ns3_path: {self.ns3_path}")
+        print(f"\nself.ns3_path: {self.ns3_path}\n")
 
     def start_sim(self):
         """
@@ -202,7 +202,7 @@ class NsOranEnv(gym.Env):
         # We may need to explicit the default values as well here, but for the moment we only change the values of the configuration
         # A good way would be to explict such values is to port here sem.manager.CampaignManager::check_and_fill_parameters
         parameters = self.scenario_configuration
-        print("parameters (scenario configuration): ")
+        print("\nparameters (scenario configuration): ")
         pprint.pprint(parameters)
         
         # sem.CampaignManager.check_and_fill_parameters()
@@ -232,7 +232,7 @@ class NsOranEnv(gym.Env):
         if not self.control_header:
             raise ValueError('Missing the list of values to perform control.')
         
-        print(f"\nself.sim_path: {self.sim_path}")
+        print(f"\nself.sim_path: {self.sim_path}\n")
         self.action_controller = ActionController(self.sim_path, self.log_file, self.control_file, self.control_header)
         self.datalake = SQLiteDatabaseAPI(self.sim_path, num_ues_gnb=self.sim_result['params']['ues'])
         pprint.pprint(self.datalake.__dict__)
@@ -261,7 +261,7 @@ class NsOranEnv(gym.Env):
         
         self.sim_result['meta']['start_time'] = time.time()
 
-        print(f"\ncommand: {command}")
+        print(f"\ncommand: {command}\n")
         self.sim_process = subprocess.Popen(command, cwd=self.sim_path, env=self.environment,
                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
@@ -346,7 +346,7 @@ class NsOranEnv(gym.Env):
         self.start_sim()
         self.close()
         print("Finished start_sim!")
-        print(f"self.is_open: {self.is_open}")
+        print(f"\nself.is_open: {self.is_open}\n")
         if options:
             if 'return_info' in options:
                 self.return_info = options['return_info']
@@ -373,7 +373,7 @@ class NsOranEnv(gym.Env):
         if not self.is_simulation_over():
             # Take a step in the environment based on the given action
             actions = self._compute_action(action)
-            print(f"actions: {actions}")
+            print(f"\nactions: {actions}\n")
 
             # Update the environment state and calculate the reward
             self.action_controller.create_control_action(self.last_timestamp, actions)
