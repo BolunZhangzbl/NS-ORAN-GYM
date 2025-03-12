@@ -323,6 +323,7 @@ class SQLiteDatabaseAPI:
 
         # Add the WHERE clause using the from_clause table's timestamp
         query += f" WHERE {from_clause}.timestamp = ?"
+        print(f"query: {query}")
 
         result = self.cursor.execute(query, (timestamp,)).fetchall()
         return result if result else None # [(observation_tuple)]
